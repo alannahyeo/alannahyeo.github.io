@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scene 1</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="scene1.css?v=3" />
+  <link rel="stylesheet" href="common.css?v=2">
+  <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+</head>
+<body>
+  <div class="center-box">
+    <div class="scene-wrapper">
+      <div class="scene-content" id="scene1">
+        <h1 class="top-text">
+          <span class="investigation-text">Investigation 1:</span>
+          <span class="social-media-text">Eli's Social Media Feed</span>
+        </h1>
+        <div class="content-split">
+          <div class="left-text">
+            <div id="typewriter-text"></div>
+            <p id="continuePrompt" class="continue-prompt">Press To Continue</p>
+          </div>
+          <div class="right-empty">
+            <img src="eli-missing-poster-final.png?v=1" alt="Eli's Poster" class="right-image"
+              onerror="this.style.display='none'; console.error('Image not found')" />
+          </div>
+        </div>
+      </div>
+
+      <div id="scene2" class="scene-content" style="display:none; opacity:0;">
+        <h1 class="final-title">Decipher The Suspicious Posts</h1>
+        <p class="final-subtitle">Click on all the posts that seem suspicious</p>
+        <div class="instagram-grid" id="postGrid">
+          <img src="post1.png" class="insta-post" data-id="1">
+          <img src="post2.png" class="insta-post" data-id="2">
+          <img src="post3.png" class="insta-post" data-id="3">
+          <img src="post4.png" class="insta-post" data-id="4">
+          <img src="post5.png" class="insta-post" data-id="5">
+          <img src="post6.png" class="insta-post" data-id="6">
+        </div>
+      </div>
+    
+    <div id="scene3" class="scene-content" style="display: none; opacity: 0;">
+    <h1 id="fadeInTitle" class="fade-title">How are these posts suspicious?</h1>
+    <div class="flip-grid">
+  <div class="card-wrapper">
+    <div class="flip-container">
+      <div class="flip-card">
+        <div class="flip-card-front">
+          <div class="card-title">Locations Shown in Post</div>
+          <div class="tap-label">Tap me</div>
+        </div>
+        <div class="flip-card-back">Revealing your location can allow strangers to find or track you in real life.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-wrapper">
+    <div class="flip-container">
+      <div class="flip-card">
+        <div class="flip-card-front">
+        <div class="card-title">Personal Details Shared</div>
+        <div class="tap-label">Tap me</div>
+      </div>
+        <div class="flip-card-back">Oversharing names, school, or schedules can make you vulnerable to scams or stalking.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-wrapper">
+    <div class="flip-container">
+      <div class="flip-card">
+        <div class="flip-card-front">
+        <div class="card-title">Barcode Exposed in Post</div>
+        <div class="tap-label">Tap me</div>
+      </div>
+        <div class="flip-card-back">Exposed barcodes can lead strangers to steal your information, impersonate you, or even find out where you are.</div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="investigation-next-container">
+  <p id="afterFlipText" class="after-flip hidden">Let's dig deeper into the disappearance of Eli...</p>
+  <button id="investigation2Btn" class="after-flip hidden">Investigation 2</button>
+</div>
+</div>
+<div id="scene4" class="scene-content" style="display: none; opacity: 0;">
+    <h1 id="scene4Title" class="fade-title hidden-title">Investigation 2: Eli's private DMs</h1>
+    <p class="final-subtitle">What could Eli have been hiding?</p>
+    <p class="final-subtext">Analyse these 3 DMs. Click on the concerning DM</p>
+    <div id="dmContainer" class="dm-container">
+      <div class="dm-message left" data-suspicious="false">
+        <p><strong>Adam:</strong>Hey ELi, it was so nice to catch up with you over lunch!</p>
+      </div>
+      <div class="dm-message left" data-suspicious="true">
+        <p><strong>Michael:</strong>Eli, send me that pic. You know what I mean 😜</p>
+      </div>
+      <div class="dm-message left" data-suspicious="false">
+        <p><strong>Nicole:</strong>Hey! Let's collaborate on this brand together!</p>
+      </div>
+    </div>
+  </div>
+  <button id="continueScene5Btn" class="continue-button hidden">Continue</button>
+</div>
+    <button id="continueBtn" class="continue-button">Continue</button>
+
+ <div id="scene5" class="scene-content" style="display: none; opacity: 0;">
+  <h1 id="scene5Title" class="fade-title">Stop. Report. Block.</h1>
+  <p class="final-subtitle">Hmmm... seems like something was going on in Eli’s personal life.</p>
+  <p class="final-subtext">If you ever receive messages that make you feel unsafe or pressured, report them immediately and block the sender.</p>
+  <button id="toScene6Btn" class="continue-button hidden">Continue</button>
+
+</div>
+
+<div id="scene6" class="scene-content" style="display: none; opacity: 0;">
+  <h1 class="fade-title">Quick Safety Check</h1>
+  <h2 class="pulsing-question">What should you do if someone sends you an inappropriate DM?</h2>
+  <div class="quiz-options">
+    <button class="quiz-btn" data-correct="true">Block & Report</button>
+    <button class="quiz-btn" data-correct="false"> Ignore</button>
+    <button class="quiz-btn" data-correct="false"> Reply asking them to stop</button>
+  </div>
+  <p id="quizResultText" class="final-subtext" style="display: none;">Thank you for learning how to stay safe!</p>
+
+<div id="investigation3Wrapper" style="text-align: center; margin-top: 2rem;">
+  <button id="investigation3Btn" class="investigation-button hidden">Investigation 3</button> 
+</div>
+</div>
+
+<div id="scene7" class="scene-content" style="display: none; opacity: 0;">
+  <h1 class="fade-title">Who do you think the suspect is?</h1>
+  <div class="suspect-grid">
+    <div class="suspect-card" data-suspect="false">
+      <img src="adam-mugshot.png" alt="Adam">
+      <div class="feedback-text"></div>
+      <p>Adam</p>
+    </div>
+    <div class="suspect-card" data-suspect="true">
+      <img src="michael-mugshot.png" alt="Michael">
+      <div class="feedback-text"></div>
+      <p>Michael</p>
+    </div>
+    <div class="suspect-card" data-suspect="false">
+      <img src="nicole-mugshot.png" alt="Nicole">
+      <div class="feedback-text"></div>
+      <p>Nicole</p>
+    </div>
+    <p id="suspectFeedback" class="final-subtext" style="display: none;"></p>
+    <button id="toScene8Btn" class="continue-button hidden">Continue</button>
+  </div>
+</div>
+
+<div id="scene8" class="scene-content" style="display: none; opacity: 0;">
+  <h1 id="scene8Title" class="fade-title investigation-title">Investigation 4: Match the Timeline</h1>
+  <span class="final-subtitle">Tap to reorder the events from earliest to latest</span>
+
+  <div class="timeline-container" id="timelineContainer">
+    <div class="timeline-card" data-order="1">
+      <p>Eli posts a photo revealing his location.</p>
+      <div class="move-buttons">
+        <button class="move-up">↑</button>
+        <button class="move-down">↓</button>
+      </div>
+    </div>
+
+    <div class="timeline-card" data-order="2">
+      <p>Eli receives a concerning DM.</p>
+      <div class="move-buttons">
+        <button class="move-up">↑</button>
+        <button class="move-down">↓</button>
+      </div>
+    </div>
+
+    <div class="timeline-card" data-order="3">
+      <p>Eli disappears offline.</p>
+      <div class="move-buttons">
+        <button class="move-up">↑</button>
+        <button class="move-down">↓</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="checkOrderWrapper">
+    <button id="checkOrderBtn" class="continue-button show">Check Order</button>
+    <p id="orderFeedback" class="final-subtitle" style="display: none;"></p>
+    <button id="toScene9Btn" class="continue-button hidden">Continue</button>
+  </div>
+</div>
+
+<div id="scene9" class="scene-content" style="display: none; opacity: 0;">
+  <h1 class="fade-title investigation-title">Eli was Found Safe</h1>
+  <p class="final-subtitle">
+    After going offline to protect himself from Michael, Eli was found safe and sound. Michael was arrested for stalking.
+  </p>
+  <img src="eli-safe.jpg" alt="Eli Safe" class="scene9-image" />
+
+   <button id="recapBtn" class="recap-button">Recap</button>
+</div>
+
+<div id="scene10" class="scene-content" style="display: none; opacity: 0;">
+  <h1 class="fade-title">How to Stay Safe Online</h1>
+  <p class="final-subtitle">Here are some important lessons based on Eli's story</p>
+
+  <div class="tip-grid">
+    <div class="tip-box">
+      <h3>Avoid Sharing Location</h3>
+      <p>Turn off location tagging and avoid posting photos that reveal where you are in real-time.</p>
+    </div>
+    <div class="tip-box">
+      <h3>Think Before You Share</h3>
+      <p>Refrain from sharing personal details like your school, schedule, or family info publicly.</p>
+    </div>
+    <div class="tip-box">
+      <h3>Be Cautious of DMs</h3>
+      <p>Never send private or inappropriate photos. Block and report anyone who makes you feel uncomfortable.</p>
+    </div>
+    <div class="tip-box">
+      <h3>Trust Your Instincts</h3>
+      <p>If something feels off—like messages from strangers or pressure to respond—trust your gut and take action.</p>
+    </div>
+  </div>
+
+  <div style="text-align: center; margin-top: 2rem;">
+    <button id="endStoryBtn" class="continue-button">Finish</button>
+  </div>
+</div>
+
+
+
+<script>
+  function updateCardPositions() {
+    const container = document.getElementById("timelineContainer");
+    const cards = Array.from(container.querySelectorAll(".timeline-card"));
+
+    cards.forEach((card, index) => {
+      const up = card.querySelector(".move-up");
+      const down = card.querySelector(".move-down");
+
+      up.disabled = index === 0;
+      down.disabled = index === cards.length - 1;
+
+      up.onclick = () => {
+        if (index > 0) {
+          container.insertBefore(card, cards[index - 1]);
+          updateCardPositions();
+        }
+      };
+
+      down.onclick = () => {
+        if (index < cards.length - 1) {
+          container.insertBefore(cards[index + 1], card);
+          updateCardPositions();
+        }
+      };
+    });
+  }
+
+  function checkTimelineOrder() {
+    const expected = [
+      "Eli posts a photo revealing his location.",
+      "Eli receives a concerning DM.",
+      "Eli disappears offline."
+    ];
+    const cards = document.querySelectorAll(".timeline-card");
+    const current = Array.from(cards).map(card => card.querySelector("p").innerText.trim());
+
+    const isCorrect = expected.every((text, i) => text === current[i]);
+
+    const feedback = document.getElementById("orderFeedback");
+    const continueBtn = document.getElementById("toScene9Btn");
+
+    if (isCorrect) {
+      feedback.innerText = "✅ Correct! You matched the timeline.";
+      feedback.style.color = "lightgreen";
+      feedback.style.display = "block";
+      continueBtn.classList.add("show");
+      continueBtn.classList.remove("hidden");
+    } else {
+      feedback.innerText = "❌ Not quite. Try again.";
+      feedback.style.color = "red";
+      feedback.style.display = "block";
+      continueBtn.classList.remove("show");
+      continueBtn.classList.add("hidden");
+    }
+  }
+
+  document.getElementById("checkOrderBtn").addEventListener("click", checkTimelineOrder);
+
+  // Initialize
+  updateCardPositions();
+</script>
+
+
+  <div id="toast" class="toast"></div>
+
+  <audio id="clickSound"ickSound src="click.mp3" preload="auto"></audio>
+
+  <script>
+   document.addEventListener('DOMContentLoaded', () => {
+    const centerBox = document.querySelector('.center-box');
+    centerBox.style.animation = 'fadeInOnly 1s ease-out forwards';
+  const textElement = document.getElementById('typewriter-text');
+  const continuePrompt = document.getElementById('continuePrompt');
+  const clickSound = document.getElementById('clickSound');
+   const suspiciousIds = ['4', '5', '6']
+   const clickedPosts = new Set();
+  const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+   const container = document.querySelector('.timeline-container');
+  const cards = Array.from(container.querySelectorAll('.timeline-card'));
+  
+  for (let i = cards.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    container.insertBefore(cards[i], cards[j]);
+  }
+  let typeBuffer = null;
+  let hasPlayedClickSound = false;
+
+  const texts = [
+    "Eli has mysteriously gone missing after a series of suspicious posts were shared on his social media feed...",
+    "Authorities are scrambling to trace his digital footprint, but clues are vanishing as quickly as they appear.",
+    "You've been tasked to dig deeper - to uncover the truth behind his disappearance and decode the mystery."
+  ];
+  let currentIndex = 0;
+
+  function typeWriterText(text, callback) {
+    textElement.innerHTML = '';
+    const paragraph = document.createElement('p');
+    paragraph.style.margin = '0 0 1rem 0';
+    const cursor = document.createElement('span');
+    cursor.className = 'typewriter-cursor';
+    paragraph.appendChild(cursor);
+    textElement.appendChild(paragraph);
+
+    let i = 0;
+    const speed = 30;
+    let source;
+
+    if (typeBuffer) {
+      source = audioContext.createBufferSource();
+      source.buffer = typeBuffer;
+      source.loop = true;
+      source.connect(audioContext.destination);
+      source.start();
+    }
+
+    function typeNextChar() {
+      if (i < text.length) {
+        const charSpan = document.createElement('span');
+        charSpan.textContent = text.charAt(i);
+        paragraph.insertBefore(charSpan, cursor);
+        i++;
+        setTimeout(typeNextChar, speed);
+      } else {
+        if (source) {
+          source.stop();
+          source.disconnect();
+        }
+        cursor.remove();
+        if
+(callback) callback();
+      }
+    }
+
+    typeNextChar();
+  }
+
+  function showNextText() {
+    if (audioContext.state === 'suspended') {
+      audioContext.resume();
+    }
+
+    if (currentIndex < texts.length) {
+      continuePrompt.classList.remove('show');
+      typeWriterText(texts[currentIndex], () => {
+        continuePrompt.classList.add('show');
+      });
+      currentIndex++;
+    } else {
+      const scene1 = document.getElementById('scene1');
+      const scene2 = document.getElementById('scene2');
+      continuePrompt.classList.remove('show');
+      scene1.classList.add('fade-out');
+
+      setTimeout(() => {
+        scene1.style.display = 'none';
+        scene2.style.display = 'flex';
+        scene2.style.opacity = '1';
+
+
+        document.querySelectorAll('.insta-post').forEach(post => {
+  post.addEventListener('click', () => {
+    const continueBtn = document.getElementById('continueBtn');
+    if (continueBtn.style.display === 'inline-block') return;
+
+    const postId = post.getAttribute('data-id');
+
+    // 🔊 Only play sound if this post hasn't been clicked before
+    if (!clickedPosts.has(postId)) {
+      clickSound.currentTime = 0;
+      clickSound.play().catch(() => {});
+      clickedPosts.add(postId);
+    }
+
+    const isSuspicious = suspiciousIds.includes(postId);
+
+    // ✅ Prevent re-marking the same suspicious post
+    if (post.classList.contains('suspicious')) return;
+
+    post.classList.add('suspicious');
+
+    showToast(isSuspicious
+      ? "✅ Good eye! This post is suspicious."
+      : "❌ Hmm... this one doesn't seem suspicious. Try again."
+    );
+
+    const selectedSuspicious = Array.from(document.querySelectorAll('.insta-post.suspicious'))
+      .map(p => p.getAttribute('data-id'))
+      .filter(id => suspiciousIds.includes(id));
+
+    const allFound = suspiciousIds.every(id => selectedSuspicious.includes(id));
+
+    if (allFound) {
+      document.querySelectorAll('.insta-post').forEach(p => {
+        p.classList.add('no-click');
+      });
+
+      setTimeout (() => {
+        continueBtn.classList.add('show');
+      }, 2000);
+    }
+    setTimeout (() => {
+      document.getElementById('fadeInTitle').classList.add('visible');
+    }, 2300);
+  });
+});
+
+      }, 1000);
+    }
+  }
+
+  function showToast(message) {
+    const toast = document.getElementById('toast');
+    toast.textContent = message;
+    toast.classList.add('toast-show');
+    setTimeout(() => {
+      toast.classList.remove('toast-show');
+    }, 2000);
+  }
+
+  // Unlock audio on any user interaction
+  document.body.addEventListener('click', () => {
+    if (audioContext.state === 'suspended') {
+      audioContext.resume();
+    }
+  }, { once: true });
+
+  // Fetch and decode audio, THEN show first text
+  fetch('typewriter-audio-final.mp3')
+    .then(response => response.arrayBuffer())
+    .then(data => audioContext.decodeAudioData(data))
+    .then(decoded => {
+      typeBuffer = decoded;
+      // Wait a few ms to ensure AudioContext can play right after decoding
+      setTimeout(() => {
+        showNextText(); // Show first message automatically
+      }, 100);
+    })
+    .catch(err => {
+      console.warn("Audio preload failed", err);
+      showNextText(); // fallback if audio doesn't load
+    });
+
+  continuePrompt.addEventListener('click', showNextText);
+
+  // Shuffle posts
+  const postGrid = document.getElementById("postGrid");
+  if (postGrid) {
+    const posts = Array.from(postGrid.children);
+    for (let i = posts.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [posts[i], posts[j]] = [posts[j], posts[i]];
+    }
+    posts.forEach(post => postGrid.appendChild(post));
+  }
+
+  document.getElementById('continueBtn').addEventListener('click', () => {
+  const scene2 = document.getElementById('scene2');
+  const scene3 = document.getElementById('scene3');
+  const continueBtn = document.getElementById('continueBtn');
+
+  continueBtn.classList.remove('show');
+  continueBtn.classList.add('fade-out');
+
+  scene2.classList.add('fade-out');
+
+  setTimeout(() => {
+    scene2.style.display = 'none';
+    scene3.style.display = 'flex';
+
+    setTimeout(() => {
+      scene3.style.opacity = '1';
+      document.getElementById('fadeInTitle').classList.add('visible');
+    }, 100);
+  }, 1000);
+});
+
+const flipCards = document.querySelectorAll('.flip-card');
+const afterFlipText = document.getElementById('afterFlipText');
+
+flipCards.forEach(card => {
+  card.addEventListener('click', () => {
+    card.classList.toggle('flipped');
+
+    // ✅ Check if ALL cards are flipped
+    const allFlipped = Array.from(flipCards).every(c => c.classList.contains('flipped'));
+
+    if (allFlipped) {
+      afterFlipText.classList.remove('hidden');
+      afterFlipText.classList.add('visible');
+      const investigation2Btn = document.getElementById('investigation2Btn');
+      investigation2Btn.classList.remove('hidden');
+      investigation2Btn.classList.add('visible');
+    }
+  });
+});
+
+document.getElementById('investigation2Btn').addEventListener('click', () => {
+  const scene3 = document.getElementById('scene3');
+  const scene4 = document.getElementById('scene4');
+
+  scene3.classList.add('fade-out');
+
+  setTimeout(() => {
+    scene3.style.display = 'none';
+    scene4.style.display = 'flex';
+
+    setTimeout(() => {
+      scene4.style.opacity = '1';
+      document.getElementById('scene4Title').classList.remove('hidden-title');
+      document.getElementById('scene4Title').classList.add('visible');
+
+      document.querySelectorAll('.dm-message').forEach(dm => {
+  dm.classList.add('visible');
+});
+    }, 100);
+  }, 1000);
+});
+
+const dmMessages = document.querySelectorAll('#dmContainer .dm-message');
+
+dmMessages.forEach(dm => {
+  dm.addEventListener('click', () => {
+    if (dm.classList.contains('flagged')) return; // already flagged
+
+    const isSuspicious = dm.dataset.suspicious === 'true';
+    if (isSuspicious) {
+      dm.classList.add('flagged');
+      dm.style.borderColor = '#006400'; // dark green
+      dm.style.boxShadow = '0 0 10px #006400';
+      showToast("✅ Suspicious DM flagged!");
+      dmMessages.forEach(otherDM => {
+        otherDM.style.pointerEvents = 'none';
+        otherDM.classList.add('disabled-dm');
+      });
+      
+
+      // Reveal Continue Button
+     const nextBtn = document.getElementById('continueScene5Btn');
+if (nextBtn) {
+  setTimeout(() => {
+    nextBtn.classList.remove('hidden');
+    nextBtn.classList.add('show');
+  }, 2100); // Waits for toast to fade before showing button
+}
+
+    } else {
+      showToast("ℹ️ This DM looks harmless.");
+    }
+  });
+});
+
+document.getElementById('continueScene5Btn').addEventListener('click', () => {
+  const scene4 = document.getElementById('scene4');
+  // Replace this with your actual scene5 logic
+  scene4.classList.add('fade-out');
+
+  setTimeout(() => {
+    scene4.style.display = 'none';
+    // Insert Scene5 show logic here
+    // e.g. document.getElementById('scene5').style.display = 'flex';
+  }, 1000);
+});
+
+document.getElementById('continueScene5Btn').addEventListener('click', () => {
+  const scene4 = document.getElementById('scene4');
+  const scene5 = document.getElementById('scene5');
+  const continueBtn = document.getElementById('continueScene5Btn');
+
+  // Fade out the button
+  continueBtn.classList.remove('show');
+  continueBtn.classList.add('fade-out');
+
+  // Fade out scene4
+  scene4.classList.add('fade-out');
+
+  setTimeout(() => {
+    scene4.style.display = 'none';
+    scene5.style.display = 'flex';
+    continueBtn.style.display = 'none'; // hide the button completely
+
+    scene5.style.display = 'flex';
+
+setTimeout(() => {
+  scene5.style.opacity = '1';
+
+  setTimeout(() => {
+  const nextBtn = document.getElementById('toScene6Btn');
+  nextBtn.classList.remove('hidden');
+  nextBtn.classList.add('show');
+}, 1000); // show the "Next" button a second after Scene 5 finishes fading in
+
+
+  setTimeout(() => {
+    document.getElementById('scene5Title').classList.add('visible');
+  }, 300);
+
+  setTimeout(() => {
+    document.querySelector('#scene5 .final-subtitle').classList.add('visible');
+  }, 800);
+
+  setTimeout(() => {
+    document.querySelector('#scene5 .final-subtext').classList.add('visible');
+  }, 1300);
+
+}, 100);
+
+// Show scene6 when continueScene5Btn is clicked
+document.getElementById('continueScene5Btn').addEventListener('click', () => {
+  const scene6 = document.getElementById('scene6');
+
+  scene6.style.display = 'flex';
+
+  setTimeout(() => {
+    scene6.style.opacity = '1';
+  }, 100);
+});
+
+// Show scene6 when toScene6Btn is clicked (alternative button)
+document.getElementById('toScene6Btn').addEventListener('click', () => {
+  const scene5 = document.getElementById('scene5');
+  const scene6 = document.getElementById('scene6');
+  const nextBtn = document.getElementById('toScene6Btn');
+  const finishQuizBtn = document.getElementById('finishQuizBtn');
+
+  nextBtn.classList.remove('show');
+  nextBtn.classList.add('fade-out');
+  scene5.classList.add('fade-out');
+
+  setTimeout(() => {
+    scene5.style.display = 'none';
+    scene6.style.display = 'flex';
+
+    setTimeout(() => {
+      scene6.style.opacity = '1';
+    }, 100);
+  }, 1000);
+});
+
+document.querySelectorAll('.quiz-btn').forEach(button => {
+  button.addEventListener('click', () => {
+    const isCorrect = button.getAttribute('data-correct') === 'true';
+    const toastMsg = isCorrect
+      ? "✅ Correct! Always block and report suspicious messages."
+      : "❌ Not quite! It's best to block and report the sender.";
+
+      showToast(toastMsg);
+
+  if (isCorrect) {
+    document.querySelectorAll('.quiz-btn').forEach(btn => {
+      btn.disabled=true;
+      btn.classList.add('disabled');
+    });
+
+    setTimeout(() => {
+     const investigation3Btn = document.getElementById('investigation3Btn');
+     investigation3Btn.classList.remove('hidden');
+     investigation3Btn.classList.add('show');
+    }, 2000);
+  }
+
+
+  });
+});
+
+
+// Investigation 3 button click handler
+document.getElementById('investigation3Btn').addEventListener('click', () => {
+  const scene6 = document.getElementById('scene6');
+  const scene7 = document.getElementById('scene7');
+  const investigation3Btn = document.getElementById('investigation3Btn');
+
+  // Fade out scene6 and button
+  investigation3Btn.classList.remove('show');
+  investigation3Btn.classList.add('fade-out');
+  scene6.classList.add('fade-out');
+
+  setTimeout(() => {
+    scene6.style.display = 'none';
+    investigation3Btn.style.display = 'none';
+    scene7.style.display = 'flex';
+
+    setTimeout(() => {
+      scene7.style.opacity = '1';
+      document.querySelector('#scene7 h1').classList.add('visible');
+    }, 100);
+  }, 1000);
+});
+
+const suspectCards = document.querySelectorAll('.suspect-card');
+const nextBtn = document.getElementById('toScene8Btn');
+
+suspectCards.forEach(card => {
+  card.addEventListener('click', () => {
+    // Remove previous highlights
+    suspectCards.forEach(c => c.classList.remove('correct', 'incorrect'));
+
+    const isCorrect = card.dataset.suspect === 'true';
+    card.classList.add(isCorrect ? 'correct' : 'incorrect');
+
+    showToast(
+      isCorrect
+        ? "✅ Correct. Michael's messages were concerning..."
+        : "❌ That might not be the one. Look closely at what they said."
+    );
+
+    if (isCorrect) {
+      setTimeout(() => {
+        nextBtn.classList.remove('hidden');
+        nextBtn.classList.add('show');
+      }, 2000);
+    }
+  });
+});
+
+// Toast function
+function showToast(message) {
+  const toast = document.getElementById('toast');
+  toast.textContent = message;
+  toast.classList.add('toast-show');
+
+  setTimeout(() => {
+    toast.classList.remove('toast-show');
+  }, 2000);
+}
+
+document.getElementById('toScene8Btn').addEventListener('click', () => {
+  document.getElementById('scene7').classList.add('fade-out');
+  setTimeout(() => {
+    document.getElementById('scene7').style.display = 'none';
+    const scene8 = document.getElementById('scene8');
+    scene8.style.display = 'flex';
+    setTimeout(() => {
+      scene8.style.opacity = '1';
+
+      const scene8Title = document.getElementById('scene8Title');
+      scene8Title.classList.remove('hidden-title');
+      scene8Title.classList.add('visible');
+    }, 100);
+  }, 1000);
+});
+
+const timelineContainer = document.querySelector('.timeline-container');
+const cards = Array.from(document.querySelectorAll('.timeline-card'));
+
+document.querySelectorAll('.move-up').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const card = btn.closest('.timeline-card');
+    const prev = card.previousElementSibling;
+    if (prev && prev.classList.contains('timeline-card')) {
+      card.parentNode.insertBefore(card, prev);
+    }
+  });
+});
+
+document.querySelectorAll('.move-down').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const card = btn.closest('.timeline-card');
+    const next = card.nextElementSibling;
+    if (next && next.classList.contains('timeline-card')) {
+      card.parentNode.insertBefore(next, card);
+    }
+  });
+});
+
+
+
+// ✅ Check order logic
+document.getElementById('checkOrderBtn').addEventListener('click', () => {
+  const currentOrder = Array.from(document.querySelectorAll('.timeline-card'))
+    .map(card => card.dataset.order);
+
+  const correctOrder = [
+    "Eli posts a photo revealing his location.",
+    "Eli receives a concerning DM.",
+    "Eli disappears offline"
+  ];
+
+  const checkOrderBtn = document.getElementById("checkOrderBtn");
+
+// Function to check if current order matches
+function isCorrectOrder() {
+  const cards = document.querySelectorAll('.timeline-card');
+  const currentOrder = Array.from(cards).map(card => card.querySelector('p').innerText.trim());
+  return JSON.stringify(currentOrder) === JSON.stringify(correctOrder);
+}
+
+// Optional: automatically show button when correct
+function maybeShowCheckButton() {
+  if (isCorrectOrder()) {
+    checkOrderBtn.classList.add('show');
+  } else {
+    checkOrderBtn.classList.remove('show');
+  }
+  upBtn.addEventListener("click", () => {
+  moveCard(index, index - 1);
+  maybeShowCheckButton(); // Add this
+});
+downBtn.addEventListener("click", () => {
+  moveCard(index, index + 1);
+  maybeShowCheckButton(); // Add this
+});
+
+}
+checkOrderBtn.addEventListener("click", () => {
+  if (isCorrectOrder()) {
+    orderFeedback.innerText = "✅ Correct order!";
+    orderFeedback.style.color = "lightgreen";
+    orderFeedback.style.display = "block";
+
+    checkOrderBtn.classList.add("fade-out");
+
+    
+    setTimeout(() => {
+      checkOrderBtn.classList.add("hidden"); // instead of style.display = "none"
+      checkOrderBtn.classList.remove('continue-button-fade-out');
+      toScene9Btn.classList.remove("hidden");
+      toScene9Btn.classList.add("show");
+    }, 800); // must match your fade-out transition duration in CSS
+  } else {
+    orderFeedback.innerText = "❌ Try again!";
+    orderFeedback.style.color = "red";
+    orderFeedback.style.display = "block";
+  }
+});
+
+
+
+});
+
+
+
+
+
+ }, 1000);
+  });
+});
+
+document.getElementById('toScene9Btn').addEventListener('click', () => {
+  const scene8 = document.getElementById('scene8');
+  const scene9 = document.getElementById('scene9');
+  const toScene9Btn = document.getElementById('toScene9Btn');
+
+  // Fade out the button and Scene 8
+  toScene9Btn.classList.remove('show');
+  toScene9Btn.classList.add('fade-out');
+  scene8.classList.add('fade-out');
+
+  setTimeout(() => {
+    scene8.style.display = 'none';
+    toScene9Btn.style.display = 'none';
+
+    // Show Scene 9
+    scene9.style.display = 'flex';
+
+    setTimeout(() => {
+      scene9.style.opacity = '1';
+      // Optionally add fade-in classes on scene9 title/subtitle here
+      const scene9Title = scene9.querySelector('h1');
+      if(scene9Title) scene9Title.classList.add('visible');
+      const scene9Subtitle = scene9.querySelector('p.final-subtitle');
+      if(scene9Subtitle) scene9Subtitle.classList.add('visible');
+    }, 100);
+  }, 1000);
+});
+
+document.getElementById('recapBtn').addEventListener('click', () => {
+  const scene9 = document.getElementById('scene9');
+  const scene10 = document.getElementById('scene10');
+  const recapBtn = document.getElementById('recapBtn');
+
+  // Fade out recap button and scene 9
+  recapBtn.classList.remove('show');
+  recapBtn.classList.add('fade-out');
+  scene9.classList.add('fade-out');
+
+  setTimeout(() => {
+    scene9.style.display = 'none';
+    recapBtn.style.display = 'none';
+    scene10.style.display = 'flex';
+
+    setTimeout(() => {
+      scene10.style.opacity = '1';
+      document.querySelector('#scene10 h1').classList.add('visible');
+  document.querySelector('#scene10 .final-subtitle').classList.add('visible');
+
+  function showToast(message) {
+  const toast = document.getElementById('toast');
+  toast.textContent = message;
+  toast.classList.add('toast-show');
+  setTimeout(() => {
+    toast.classList.remove('toast-show');
+  }, 3000); // 3 seconds
+}
+
+      showToast("✅ You've successfully solved the mystery!");
+    }, 100);
+  }, 1000);
+
+
+});
+
+
+
+
+
+  </script>
+</body>
+</html>

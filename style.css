@@ -1,0 +1,107 @@
+body{
+    background-image: url('homepage-background.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+iframe{
+    width: 960px;
+    height: 540px;
+    aspect-ratio: 16/9;
+    border: none;
+    background-color: brown;
+    overflow: hidden;
+}
+
+.top-text{
+    position: relative;
+    margin-top: 0;
+    font-size: 60px;
+    color: red;
+    font-family: Syne Mono, monospace;
+    text-align: center;
+    opacity: 0;
+    filter: blur(8px);
+    animation: fadeBlurIn 3s ease-in-out infinite alternate;
+}
+
+@keyframes fadeBlurIn {
+    0%{
+        opacity: 0;
+        filter: blur(8px);
+        transform: scale(1.1);
+    }
+    100%{
+        opacity: 1;
+        filter: blur(0);
+        transform: scale(1);
+    }
+}
+
+.center-box p{
+    font-size: 40px;
+    color: white;
+    font-family: Syne Mono, monospace;
+    margin-top: 20px;
+    text-align: center;
+    width: 100%;
+    margin: 10px 0;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.highlight{
+    color: red;
+}
+
+.start-button {
+  all: initial; /* Complete reset */
+  font-family: 'Syne Mono', monospace !important;
+  font-size: 36px !important;
+  padding: 24px 60px !important;
+  margin-top: 20px !important;
+  background-color: black !important;
+  color: white !important;
+  border: 3px solid red !important;
+  border-radius: 12px !important;
+  cursor: pointer !important;
+  box-shadow: 0 0 16px red, 0 0 32px red !important;
+  transition: all 0.3s ease !important;
+  display: inline-block !important;
+  text-align: center !important;
+}
+
+.start-button:hover {
+  box-shadow: 0 0 25px red, 0 0 50px red !important;
+  transform: scale(1.08) !important;
+}
+
+.fade-out{
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+body.fade-out{
+    opacity: 0;
+    transition: opacity 1s ease-out;
+}
+
+.box-content.fade-out {
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+.box-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    gap: 20px;
+}

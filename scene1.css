@@ -1,0 +1,1077 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+
+body {
+  background-image: url('homepage-background.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: 0;
+  font-family: 'Syne Mono', monospace, sans-serif;
+  color: white;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.center-box {
+  opacity: 0;
+  animation: fadeInOnly 1s ease forwards;
+}
+
+
+@keyframes fadeInOnly {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+.scene-wrapper {
+  width: 100%;
+  position: relative;
+}
+
+.scene-content {
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.top-text {
+  font-size: 36px;
+  color: red;
+  margin-top: 0;
+  text-align: center;
+  text-shadow: 0 0 10px red, 0 0 20px red;
+}
+
+.social-media-text {
+  font-size: 36px;
+  display: block;
+  margin-top: 10px;
+}
+
+.content-split {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-top: 2rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.left-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  gap: 1rem;
+}
+
+#typewriter-text {
+  white-space: pre-wrap;
+  word-break: break-word;
+  line-height: 1.8;
+  width: 100%;
+  font-size: 1.1rem;
+  min-height: 10em; /* This prevents height shift during typing */
+  max-height: 10em;
+  overflow-y: auto;
+  text-align: center;
+}
+
+
+.typewriter-cursor {
+  display:
+inline-block
+;
+  width: 2px;
+  background: red;
+  height: 1em;
+  animation: blink-caret 0.75s step-end infinite;
+}
+
+@keyframes blink-caret {
+  from, to { opacity: 0; }
+  50% { opacity: 1; }
+}
+
+.continue-prompt {
+  font-family: 'Syne Mono', monospace;
+  font-size: 14px;
+  color: red;
+  text-shadow: 0 0 5px red, 0 0 10px red;
+  cursor: pointer;
+  user-select: none;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.continue-prompt.show {
+  visibility: visible;
+  opacity: 1;
+  animation: glowText 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes glowText {
+  from {
+    text-shadow: 0 0 5px red;
+    opacity: 0.6;
+  }
+  to {
+    text-shadow: 0 0 20px red;
+    opacity: 1;
+  }
+}
+
+.continue-prompt:hover {
+  color: #fff;
+  transform: scale(1.1);
+  opacity: 0.9;
+}
+
+.right-empty {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.right-image {
+  max-width: 100%;
+  max-height: 250px;
+  object-fit: contain;
+  border-radius: 10px;
+  box-shadow: 0 0 6px rgba(255, 0, 0, 0.4), 0 0 12px rgba(255, 0, 0, 0.3);
+  margin-top: -10px;
+}
+
+.fade-in {
+  animation: fadeIn 2s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.fade-out {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  pointer-events: none;
+}
+
+#scene2 {
+  opacity: 0;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 2s ease-in-out;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.final-title {
+  font-size: 28px;
+  color: red;
+  font-family: 'Syne Mono', monospace;
+  text-align: center;
+  text-shadow: 0 0 10px red;
+  margin: 20px 0 0 0;
+  opacity: 0;
+}
+
+@keyframes fadeInOnly {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+.final-subtitle{
+  font-size: 18px;
+  color: white;
+  font-family: 'Syne Mono', monospace;
+  margin-top: 12px;
+  text-align: center;
+  opacity: 0;
+}
+
+.instagram-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  padding: 10px;;
+  width: 100%;
+  justify-items: center;
+  margin-bottom: 20px;
+}
+
+.insta-post {
+  width: 100%;
+  max-width: 180px;
+  height: auto;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.insta-post:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px red;
+}
+
+.suspicious {
+  outline: 3px solid red;
+  box-shadow: 0 0 20px red;
+}
+
+@media (max-width: 600px) {
+  .instagram-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .insta-post {
+    max-width: 120px;
+  }
+}
+
+.toast {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.85);
+  color: white;
+  border: 2px solid red;
+  font-size: 16px;
+  padding: 12px 24px;
+  border-radius: 8px;
+  box-shadow: 0 0 15px red;
+  font-family: 'Syne Mono', monospace;
+  z-index: 9999;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.toast-show {
+  opacity: 1;
+  pointer-events:auto;
+}
+
+.continue-button {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 14px 36px;
+  font-size: 18px;
+  font-family: 'Syne Mono', monospace;
+  background-color: black;
+  color: white;
+  border: 2px solid red;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 0 12px red, 0 0 24px red;
+  z-index: 9998;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.8s ease;
+}
+
+.continue-button:hover{
+  transform: translateX(-50%) scale(1.05);
+  box-shadow: 0 0 20px red, 0 0 40px red;
+}
+
+.continue-button.show {
+  opacity: 1;
+  pointer-events: auto;
+  transition: opacity 0.4s ease;
+}
+
+.continue-button.fade-out {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 1s ease-in-out;
+}
+
+.no-click {
+  pointer-events: none;
+  opacity: 0.6;
+  filter: grayscale(20%);
+}
+
+.center-box.fade-out .continue-button {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  pointer-events: none;
+}
+
+.scene-wrapper.fade-out {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  pointer-events: none;
+}
+
+.center-box.fade-out * {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  pointer-events: none;
+}
+
+.fade-title {
+  position: relative;
+  font-size: 36px;
+  color: red;
+  font-family: 'Syne Mono', monospace;
+  text-align: center;
+  opacity: 0;
+  filter: blur(8px);
+  transition: all 1.8s ease-in-out;
+  transform: scale(1.1);
+  margin-top: 10px;
+  margin-bottom: 0;
+  text-shadow: 0 0 10px red, 0 0 20px red;
+}
+
+.fade-title.visible {
+  opacity: 1;
+  filter: blur(0);
+  transform: scale(1);
+}
+
+.hidden-title {
+  opacity: 0;
+  pointer-events: none;
+}
+
+#scene3 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 10px;
+  transition: opacity 2s ease-in-out;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+#scene2 .insta-post {
+  transition: opacity 1s ease-in-out, transform 0.3s ease;
+}
+
+#scene2.fade-out .insta-post {
+  opacity: 0;
+}
+
+.final-title,
+.final-subtitle {
+  opacity: 1;
+  transition: opacity 1s ease-in-out;
+  transform: none;
+}
+
+#scene2.fade-out .final-title,
+#scene2.fade-out .final-subtitle {
+  opacity: 0;
+}
+
+.flip-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin-top: 40px;
+  width: 100%;
+  max-width: 800px;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.card-wrapper {
+  height: 200px; /* Ensures consistent height */
+}
+
+.flip-container {
+  perspective: 1000px;
+  width: 100%;
+  height: 100%; /* Match card height */
+}
+
+.flip-card {
+  position: relative; /* IMPORTANT for stacking front/back */
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+  cursor: pointer;
+}
+
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  background-color: black;
+  color: white;
+  border: 2px solid red;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  text-align: center;
+  font-family: 'Syne Mono', monospace;
+  font-size: 16px;
+  box-shadow: 0 0 10px red;
+  box-sizing: border-box;
+}
+
+.flip-card-front {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+
+.flip-card-back {
+  transform: rotateY(180deg);
+}
+
+.flip-card.flipped {
+  transform: rotateY(180deg);
+}
+
+.card-title {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.tap-label {
+  font-size: 12px;
+  color: rgba(255, 68, 68, 0.6);
+  font-family: 'Syne Mono', monospace;
+  text-shadow: 0 0 6px rgba(255, 0, 0, 0.4);
+  animation: glowText 1.5s ease-in-out infinite alternate;
+}
+
+.after-flip {
+  font-size: 18px;
+  color: white;
+  font-family: 'Syne Mono', monospace;
+  text-align: center;
+  margin-top: 10px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 1.5s ease, transform 1.5s ease;
+}
+
+.after-flip.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hidden {
+  pointer-events: none;
+}
+
+.investigation-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px red, 0 0 40px red;
+}
+
+.investigation-button.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.hidden {
+  pointer-events: none;
+}
+
+.investigation-next-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 40px;
+  width: 100%;
+}
+
+.continue-button.inline {
+  position: relative;
+  bottom: auto;
+  left: auto;
+  transform: none;
+  margin-top: 20px;
+  margin-bottom: 60px;
+  box-shadow: 0 0 12px red, 0 0 24px red;
+  opacity: 0;
+  transition: opacity 1.5s ease, transform 1.5s ease;
+}
+
+.continue-button.inline.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.continue-button.inline.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+#investigation2Btn {
+  background-color: black;
+  color: white;
+  border: 2px solid red;
+  box-shadow: 0 0 12px red, 0 0 24px red;
+  padding: 15px 30px;
+  font-size: 18px;
+  font-family: 'Syne Mono', monospace;
+  border-radius: 8px;
+  transition: opacity 1.5s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  opacity: 0;
+  pointer-events: none;
+  cursor: pointer;
+  transform: translateY(10px);
+  margin-top: 20px;
+}
+
+#investigation2Btn.visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+#investigation2Btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px red, 0 0 40px red;
+}
+
+#scene3.fade-out {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  pointer-events: none;
+}
+
+.final-subtext {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.6);
+  font-family: 'Syne Mono', monospace;
+  text-align: center;
+  margin-top: 3px;
+  margin-bottom: 0;
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out;
+}
+
+/* If you want it to fade in like the subtitle */
+.fade-title.visible ~ .final-subtext {
+  opacity: 1;
+}
+
+
+.dm-container {
+  width: 100%;
+  max-width: 600px;
+  margin-top: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.dm-message {
+  background-color: #111;
+  border: 2px solid red;
+  border-radius: 8px;
+  padding: 4px 8px;
+  font-size: 14px; 
+  line-height: 1.3;
+  color: white;
+  font-family: 'Syne Mono', monospace;
+  cursor: pointer;
+  box-shadow: 0 0 4px red;
+  user-select: none;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 1.5s ease, transform 1.5s ease;
+  position: relative;
+}
+
+.dm-message.left {
+  align-self: flex-start;
+  background-color: #111;
+  border: 2px solid red;
+  border-top-left-radius: 5px;
+  text-align: left;
+}
+
+.dm-message.right {
+  align-self: flex-end;
+  background-color: #1a1a1a;
+  border: 2px solid red;
+  border-top-right-radius: 5px;
+  text-align: right;
+}
+
+.dm-message.left::before {
+  content: "👤";
+  position: absolute;
+  left: -25px;
+  top: 5px;
+}
+
+.dm-message.right::before {
+  content: "🧑";
+  position: absolute;
+  right: -25px;
+  top: 5px;
+}
+
+.dm-message.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.dm-message:hover {
+  opacity: 1;
+  transform: translateY(0);
+  background-color: #220000;
+  box-shadow: 0 0 12px red;
+}
+
+.dm-text {
+  display: inline-block;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.scene-content {
+  transition: opacity 1s ease-out;
+}
+
+.scene-content.fade-out {
+  opacity: 0;
+}
+
+.quiz-options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 24px;
+  align-items: center;
+}
+
+.quiz-btn {
+  padding: 10px 22px;
+  font-size: 16px;
+  font-family: 'Syne Mono', monospace;
+  background-color: black;
+  color: white;
+  border: 2px solid red;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 0 12px red;
+  transition: all 0.3s ease;
+}
+
+.quiz-btn:hover {
+  background-color: #220000;
+  box-shadow: 0 0 20px red, 0 0 40px red;
+}
+
+
+.continue-button.hidden {
+  display: none;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.continue-button.show {
+  display: inline-block;
+  opacity: 1;
+  pointer-events: auto;
+  transition: opacity 1s ease-in-out;
+}
+
+.continue-button.fade-out {
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transition: opacity 1s ease;
+}
+
+#investigation3Btn {
+  background-color: black;
+  color: white;
+  border: 2px solid red;
+  box-shadow: 0 0 12px red, 0 0 24px red;
+  padding: 15px 30px;
+  font-size: 18px;
+  font-family: 'Syne Mono', monospace;
+  border-radius: 8px;
+  transition: opacity 1s ease;
+  opacity: 0;
+  pointer-events: none;
+  cursor: pointer;
+  transform: none; /* override any inherited transform */
+  margin-top: 20px;
+  position: relative;
+  left: auto;
+  bottom: auto;
+}
+
+#investigation3Btn.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+#investigation3Btn:hover {
+  transform: scale(1.05); /* scale only, no translate */
+  box-shadow: 0 0 20px red, 0 0 40px red;
+}
+
+.pulsing-question {
+  color: red;
+  font-size: 2em;
+  text-align: center;
+  margin-bottom: 20px;
+  animation: glowPulse 2s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+  0% {
+    text-shadow: 0 0 5px red;
+    opacity: 1;
+  }
+  50% {
+    text-shadow: 0 0 20px red, 0 0 40px red;
+    opacity: 0.8;
+  }
+  100% {
+    text-shadow: 0 0 5px red;
+    opacity: 1;
+  }
+}
+
+#investigation3Wrapper {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.investigation-button {
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-family: 'Syne Mono', monospace;
+  border: 2px solid #fff;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+  border-radius: 8px;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+.investigation-button.show {
+  opacity: 1;
+}
+
+.investigation-button.fade-out {
+  opacity: 0;
+}
+
+#scene7 {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.suspect-grid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  padding: 1rem;
+  margin-top: 0.5rem;
+}
+
+.suspect-card {
+  width: 30%;
+  max-width: 200px;
+  height: 270px;
+  text-align: center;
+  margin-top: -5px;
+  padding-bottom: 2rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.suspect-card img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  object-position: top;
+  border-radius: 10px;
+  display: block;
+}
+
+.suspect-card:hover img {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(255, 0, 0, 0.4);
+}
+
+.suspect-card p {
+  margin-top: 0.5rem;
+  font-weight: bold;
+}
+
+.suspect-card.selected img {
+  border: 3px solid red;
+  box-shadow: 0 0 20px red;
+}
+
+.suspect-card.disabled {
+  pointer-events: none;
+  opacity: 1;
+  filter: none;
+}
+
+.suspect-card.correct {
+ outline: 3px darkgreen;
+ outline-offset: 0;
+ border-radius: 8px;
+ padding: 0;
+ margin: 0;
+ box-sizing: border-box;
+ display: inline-block;
+ width: fit-content;
+ box-shadow: none;
+}
+
+.suspect-card.incorrect {
+  outline: 3px darkred;
+  outline-offset: 0;
+  border-radius: 8px;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  display: inline-block;
+  width: fit-content;
+  box-shadow: none;
+}
+
+.suspect-card.correct img {
+  border: 3px solid darkgreen;
+  box-shadow: 0 0 15px darkgreen;
+}
+
+.suspect-card.incorrect img {
+  border: 3px solid red;
+  box-shadow: 0 0 15px red;
+}
+
+#suspectFeedback {
+  margin-top: 1rem;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+#suspectFeedback.show {
+  opacity: 1;
+}
+
+.suspect-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  margin-top: 2rem;
+}
+
+.feedback-text {
+  min-height: 40px;
+  margin-top: 0.5rem;
+  font-weight: bold;
+  color: #fff;
+}
+
+.timeline-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  margin: 0 auto;
+  max-width: 90%;
+}
+
+.timeline-card {
+  width: 100%;
+  max-width: 480px;
+  padding: 0.6rem 1rem; /* less top/bottom padding */
+  margin: 0.5rem 0;
+  border: 1px solid #444;
+  border-radius: 10px;
+  background-color: #111;
+  color: #fff;
+  font-family: 'Syne Mono', monospace;
+  font-size: 0.9rem;
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem; /* reduce spacing between text & buttons */
+  box-sizing: border-box;
+}
+
+
+.timeline-card p {
+  font-size: 0.95rem;
+  line-height: 1.4;
+  margin: 0 0 0.3rem 0;
+}
+
+.timeline-card:hover {
+  transform: scale(1.02);
+  border-color: red;
+}
+
+.timeline-card.selected {
+  border: 2px solid red;
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.6);
+}
+
+.move-buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 0.4rem;
+  margin-top: 0;
+  justify-content: center;
+}
+
+.move-buttons button {
+  background: none;
+  border: none;
+  color: white;
+  padding: 0.2rem 0.4rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.move-buttons button:hover {
+  color: red;
+  transform: scale (1.1)
+}
+
+#checkOrderBtn {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 1s ease;
+  margin-top: 20px;
+}
+
+#checkOrderBtn.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+#checkOrderWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem; /* Adds spacing between buttons */
+}
+
+.scene9-image {
+    max-width: 300px;
+    width: 100%;
+    display: block;
+    margin: 1rem auto 2rem auto;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 128, 0, 0.5);
+  }
+
+  /* Optional: add spacing around the recap button */
+.recap-button {
+  position: absolute; /* Positioned relative to center-box */
+  bottom: 20px;
+  right: 20px;
+  padding: 16px 42px; /* Slightly larger */
+  font-size: 20px;     /* Slightly bigger font */
+  font-family: 'Syne Mono', monospace;
+  background-color: black;
+  color: white;
+  border: 2px solid red;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 0 12px red, 0 0 24px red;
+  z-index: 9998;
+}
+
+
+  .tip-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.tip-box {
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 1.5rem;
+  border-radius: 1rem;
+  border: 1px solid #fff3;
+  box-shadow: 0 0 10px #0003;
+  font-family: 'Syne Mono', monospace;
+  transition: transform 0.3s;
+}
+
+.tip-box:hover {
+  transform: scale(1.03);
+}
+
+.tip-box h3 {
+  margin-top: 0;
+  color: red;
+}
+
+.tip-box p {
+  color: #ccc;
+  margin-bottom: 0;
+}
+
+#scene10 .fade-title {
+  margin-top: 2rem; /* Pushes title down */
+}
+
+#scene10 .final-subtitle {
+  margin-top: 1rem; /* Pushes subtitle a little further down */
+}
+
+
+
+
+
+

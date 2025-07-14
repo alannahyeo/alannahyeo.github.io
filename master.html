@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Master</title>
+    <base href="https://alannahyeo.github.io/Interactive-Story/">
+    <link rel="stylesheet" href="https://alannahyeo.github.io/Interactive-Story/style.css?v=20240712">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne+Mono&display=swap" rel="stylesheet">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            height: 100%;
+        }
+        #sceneFrame {
+            width: 100%;
+            height: 100vh;
+            border: none;
+            
+        }
+    </style>
+</head>
+<body>
+    <audio id="bgAudio" loop>
+        <source src="ominous-audio.mp3" type="audio/mpeg">
+    </audio>
+    <iframe id="sceneFrame" src="index.html"></iframe>
+
+    <script>
+        // Handle audio autoplay
+        document.addEventListener('click', () => {
+            const audio = document.getElementById('bgAudio');
+            audio.play().catch(e => console.log("Audio play failed:", e));
+        }, { once: true });
+        
+        // Ensure proper path resolution
+        document.getElementById('sceneFrame').onload = function() {
+            this.contentWindow.postMessage({
+                type: 'setBasePath',
+                path: 'https://alannahyeo.github.io/Interactive-Story/'
+            }, '*');
+        };
+        // Add this to the existing script in master.html
+window.addEventListener('message', function(event) {
+    if (event.data.type === 'changeScene') {
+        const iframe = document.getElementById('sceneFrame');
+        iframe.style.opacity = '0';
+        setTimeout(() => {
+            iframe.src = event.data.scene;
+            setTimeout(() => {
+                iframe.style.opacity = '1';
+            }, 100);
+        }, 1000); // Match this with the fade-out duration
+    }
+});
+    </script>
+</body>
+</html>
